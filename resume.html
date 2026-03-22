@@ -1,0 +1,234 @@
+<<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>粘雅茵 Wendy | 個人履歷設計</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --melon-green: #D3F2D3; /* 主色：哈密瓜綠 */
+            --soft-yellow: #FFF9C4; /* 次色：淡黃色 */
+            --dark-olive: #4A5D4A;  /* 文字深色 */
+            --bg-light: #F9FDF9;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--dark-olive);
+            display: flex;
+            justify-content: center;
+            padding: 50px 20px;
+        }
+
+        .resume-card {
+            width: 100%;
+            max-width: 850px;
+            background: var(--white);
+            display: flex;
+            box-shadow: 15px 15px 0px var(--melon-green);
+            border: 1px solid #e0eee0;
+            overflow: hidden;
+        }
+
+        /* 左側：個人形象區 */
+        .sidebar {
+            width: 35%;
+            background-color: var(--melon-green);
+            padding: 40px 25px;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 80px; /* 圓形剪裁 */
+            object-fit: cover;
+            border: 6px solid var(--white);
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .name-title h1 {
+            font-size: 26px;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+
+        .name-title h2 {
+            font-size: 16px;
+            font-weight: 300;
+            color: #6a8b6a;
+            margin-bottom: 35px;
+        }
+
+        .contact-info {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 13px;
+        }
+
+        .contact-item {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-item i {
+            width: 25px;
+            color: #5b8a5b;
+        }
+
+        /* 右側：內容詳細區 */
+        .main-content {
+            width: 65%;
+            padding: 50px;
+        }
+
+        section {
+            margin-bottom: 35px;
+        }
+
+        .section-header {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-header::after {
+            content: "";
+            flex: 1;
+            height: 2px;
+            background: var(--soft-yellow);
+            margin-left: 15px;
+        }
+
+        .text-content {
+            font-size: 14.5px;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+
+        .exp-box {
+            margin-top: 10px;
+        }
+
+        .exp-item {
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 3px solid var(--melon-green);
+        }
+
+        .exp-item h4 {
+            font-size: 16px;
+            color: var(--dark-olive);
+        }
+
+        .exp-item span {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background: var(--soft-yellow);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 700px) {
+            .resume-card { flex-direction: column; }
+            .sidebar, .main-content { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-card">
+        <aside class="sidebar">
+            <img src="you.jpg" alt="雅茵 Wendy" class="profile-img">
+            
+            <div class="name-title">
+                <h1>粘雅茵</h1>
+                <h2>Wendy Nian</h2>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-item"><i class="fas fa-graduation-cap"></i> AU114054056</div>
+                <div class="contact-item"><i class="fas fa-university"></i> 亞洲大學 時尚系一年級</div>
+                <div class="contact-item"><i class="fas fa-envelope"></i> wendy.nian@asia.edu.tw</div>
+                <div class="contact-item"><i class="fas fa-phone"></i> 0966-222-371</div>
+                <div class="contact-item"><i class="fas fa-map-marker-alt"></i> 台中，台灣</div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <section>
+                <h3 class="section-header">ABOUT ME / 自我介紹</h3>
+                <p class="text-content">
+                    我是粘雅茵，目前就讀於亞洲大學時尚設計學系。我對色彩學、布料材質以及當代視覺傳達充滿濃厚興趣。熱衷於探索時尚與永續發展的結合點，透過設計傳達對世界的觀察。我具備良好的團隊協作能力與數位工具使用習慣，致力於在時尚領域創造具有美感與實用性的作品。
+                </p>
+            </section>
+
+            <section>
+                <h3 class="section-header">EXPERIENCE / 實踐經歷</h3>
+                <div class="exp-box">
+                    <div class="exp-item">
+                        <h4>亞洲大學時尚週 幕後統籌協助</h4>
+                        <span>2025.12</span>
+                        <p class="text-content" style="font-size: 13px;">負責後台服裝順序管理與細節調整，確保動態秀順利進行。</p>
+                    </div>
+                    <div class="exp-item">
+                        <h4>個人品牌識別練習 - Sustainable Roast</h4>
+                        <span>2025.11</span>
+                        <p class="text-content" style="font-size: 13px;">獨立設計咖啡店品牌 Logo 與形象視覺，結合閱讀與有機咖啡的概念。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h3 class="section-header">SKILLS / 專業技能</h3>
+                <div class="tags">
+                    <span class="tag">服裝畫設計</span>
+                    <span class="tag">色彩分析</span>
+                    <span class="tag">基礎立體剪裁</span>
+                    <span class="tag">視覺陳列規劃</span>
+                </div>
+            </section>
+
+            <section>
+                <h3 class="section-header">TOOLS / 工具使用</h3>
+                <div class="tags">
+                    <span class="tag" style="background: #e1f5fe;">Adobe Illustrator</span>
+                    <span class="tag" style="background: #e1f5fe;">Procreate</span>
+                    <span class="tag" style="background: #e1f5fe;">VS Code / Git</span>
+                    <span class="tag" style="background: #e1f5fe;">Midjourney AI</span>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +6,7 @@
     <title>粘雅茵 Wendy | 個人履歷設計</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --melon-green: #D3F2D3; /* 主色：哈密瓜綠 */
@@ -13,6 +14,7 @@
             --dark-olive: #4A5D4A;  /* 文字深色 */
             --bg-light: #F9FDF9;
             --white: #FFFFFF;
+            --glass-melon: rgba(211, 242, 211, 0.5); /* 半透明哈密瓜綠 */
         }
 
         * {
@@ -23,11 +25,13 @@
         }
 
         body {
-            background-color: var(--bg-light);
+            background-color: #f6faf6;
             color: var(--dark-olive);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             padding: 50px 20px;
+            min-height: 100vh;
         }
 
         .resume-card {
@@ -38,9 +42,9 @@
             box-shadow: 15px 15px 0px var(--melon-green);
             border: 1px solid #e0eee0;
             overflow: hidden;
+            margin-bottom: 40px;
         }
 
-        /* 左側：個人形象區 */
         .sidebar {
             width: 35%;
             background-color: var(--melon-green);
@@ -49,118 +53,80 @@
         }
 
         .profile-img {
-            width: 160px;
-            height: 160px;
-            border-radius: 80px; /* 圓形剪裁 */
+            width: 160px; height: 160px;
+            border-radius: 50%;
             object-fit: cover;
             border: 6px solid var(--white);
             margin-bottom: 25px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .name-title h1 {
-            font-size: 26px;
-            letter-spacing: 3px;
-            margin-bottom: 5px;
-        }
-
-        .name-title h2 {
-            font-size: 16px;
-            font-weight: 300;
-            color: #6a8b6a;
-            margin-bottom: 35px;
-        }
+        .name-title h1 { font-size: 26px; letter-spacing: 3px; margin-bottom: 5px; }
+        .name-title h2 { font-size: 16px; font-weight: 300; color: #6a8b6a; margin-bottom: 35px; }
 
         .contact-info {
-            text-align: left;
-            background: rgba(255, 255, 255, 0.6);
-            padding: 20px;
-            border-radius: 12px;
-            font-size: 13px;
+            text-align: left; background: rgba(255, 255, 255, 0.6);
+            padding: 20px; border-radius: 12px; font-size: 13px;
         }
 
-        .contact-item {
-            margin-bottom: 12px;
+        .contact-item { margin-bottom: 12px; display: flex; align-items: center; }
+        .contact-item i { width: 25px; color: #5b8a5b; }
+
+        .main-content { width: 65%; padding: 50px; }
+        section { margin-bottom: 35px; }
+        .section-header { font-size: 18px; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; }
+        .section-header::after { content: ""; flex: 1; height: 2px; background: var(--soft-yellow); margin-left: 15px; }
+        .text-content { font-size: 14.5px; line-height: 1.8; color: #555; text-align: justify; }
+
+        .exp-box { margin-top: 10px; }
+        .exp-item { margin-bottom: 15px; padding-left: 15px; border-left: 3px solid var(--melon-green); }
+        .exp-item h4 { font-size: 16px; color: var(--dark-olive); }
+        .exp-item span { font-size: 12px; color: #999; }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+        .tag { background: var(--soft-yellow); padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; }
+
+        /* 音樂播放器樣式 */
+        .melon-music-section {
+            width: 100%;
+            max-width: 850px;
+            background: var(--glass-melon);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 25px;
             display: flex;
             align-items: center;
+            gap: 25px;
+            box-shadow: 10px 10px 20px rgba(74, 93, 74, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        .contact-item i {
-            width: 25px;
-            color: #5b8a5b;
+        .clover-icon-wrapper { width: 110px; height: 110px; display: flex; justify-content: center; align-items: center; }
+        .clover-svg {
+            width: 100%; height: 100%;
+            fill: url(#cloverGradient);
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            transition: 0.3s ease;
         }
 
-        /* 右側：內容詳細區 */
-        .main-content {
-            width: 65%;
-            padding: 50px;
-        }
+        .music-content { flex: 1; }
+        .player-header { font-size: 11px; color: #6a8b6a; letter-spacing: 2px; margin-bottom: 5px; }
+        .song-details h2 { font-size: 22px; font-weight: 700; color: var(--dark-olive); }
+        .song-details p { font-size: 13px; color: #777; margin: 2px 0 20px; }
 
-        section {
-            margin-bottom: 35px;
-        }
+        .progress-container { height: 6px; background: rgba(255, 255, 255, 0.5); border-radius: 10px; margin: 15px 0; overflow: hidden; cursor: pointer; }
+        .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #D3F2D3 0%, #FFF9C4 100%); border-radius: 10px; }
 
-        .section-header {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .section-header::after {
-            content: "";
-            flex: 1;
-            height: 2px;
-            background: var(--soft-yellow);
-            margin-left: 15px;
-        }
-
-        .text-content {
-            font-size: 14.5px;
-            line-height: 1.8;
-            color: #555;
-            text-align: justify;
-        }
-
-        .exp-box {
-            margin-top: 10px;
-        }
-
-        .exp-item {
-            margin-bottom: 15px;
-            padding-left: 15px;
-            border-left: 3px solid var(--melon-green);
-        }
-
-        .exp-item h4 {
-            font-size: 16px;
-            color: var(--dark-olive);
-        }
-
-        .exp-item span {
-            font-size: 12px;
-            color: #999;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .tag {
-            background: var(--soft-yellow);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-        }
+        .controls { display: flex; gap: 20px; align-items: center; }
+        .control-btn { background: none; border: none; color: #6a8b6a; cursor: pointer; font-size: 1.3rem; transition: 0.3s; }
+        .control-btn:hover { color: var(--dark-olive); transform: scale(1.1); }
+        .play-toggle { font-size: 2rem; }
 
         @media (max-width: 700px) {
             .resume-card { flex-direction: column; }
             .sidebar, .main-content { width: 100%; }
+            .melon-music-section { flex-direction: column; text-align: center; gap: 15px; }
+            .controls { justify-content: center; }
         }
     </style>
 </head>
@@ -169,12 +135,10 @@
     <div class="resume-card">
         <aside class="sidebar">
             <img src="you.jpg" alt="雅茵 Wendy" class="profile-img">
-            
             <div class="name-title">
                 <h1>粘雅茵</h1>
                 <h2>Wendy Nian</h2>
             </div>
-
             <div class="contact-info">
                 <div class="contact-item"><i class="fas fa-graduation-cap"></i> AU114054056</div>
                 <div class="contact-item"><i class="fas fa-university"></i> 亞洲大學 時尚系一年級</div>
@@ -187,48 +151,117 @@
         <main class="main-content">
             <section>
                 <h3 class="section-header">ABOUT ME / 自我介紹</h3>
-                <p class="text-content">
-                    我是粘雅茵，目前就讀於亞洲大學時尚設計學系。我對色彩學、布料材質以及當代視覺傳達充滿濃厚興趣。熱衷於探索時尚與永續發展的結合點，透過設計傳達對世界的觀察。我具備良好的團隊協作能力與數位工具使用習慣，致力於在時尚領域創造具有美感與實用性的作品。
-                </p>
+                <p class="text-content">我是粘雅茵，目前就讀於亞洲大學時尚設計學系。我對色彩學、布料材質以及當代視覺傳達充滿濃厚興趣。熱衷於探索時尚與永續發展的結合點，透過設計傳達對世界的觀察。</p>
             </section>
-
             <section>
                 <h3 class="section-header">EXPERIENCE / 實踐經歷</h3>
                 <div class="exp-box">
                     <div class="exp-item">
                         <h4>亞洲大學時尚週 幕後統籌協助</h4>
                         <span>2025.12</span>
-                        <p class="text-content" style="font-size: 13px;">負責後台服裝順序管理與細節調整，確保動態秀順利進行。</p>
                     </div>
                     <div class="exp-item">
                         <h4>個人品牌識別練習 - Sustainable Roast</h4>
                         <span>2025.11</span>
-                        <p class="text-content" style="font-size: 13px;">獨立設計咖啡店品牌 Logo 與形象視覺，結合閱讀與有機咖啡的概念。</p>
                     </div>
                 </div>
             </section>
-
             <section>
                 <h3 class="section-header">SKILLS / 專業技能</h3>
                 <div class="tags">
-                    <span class="tag">服裝畫設計</span>
-                    <span class="tag">色彩分析</span>
-                    <span class="tag">基礎立體剪裁</span>
-                    <span class="tag">視覺陳列規劃</span>
+                    <span class="tag">服裝畫設計</span><span class="tag">色彩分析</span><span class="tag">基礎立體剪裁</span>
                 </div>
             </section>
-
             <section>
                 <h3 class="section-header">TOOLS / 工具使用</h3>
                 <div class="tags">
                     <span class="tag" style="background: #e1f5fe;">Adobe Illustrator</span>
                     <span class="tag" style="background: #e1f5fe;">Procreate</span>
                     <span class="tag" style="background: #e1f5fe;">VS Code / Git</span>
-                    <span class="tag" style="background: #e1f5fe;">Midjourney AI</span>
                 </div>
             </section>
         </main>
     </div>
 
+    <section class="melon-music-section">
+        <div class="clover-icon-wrapper">
+            <svg class="clover-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="cloverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#D3F2D3;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#FFF9C4;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path d="M50 15C42.8 15 36.8 19.3 33.8 25.7C27.4 22.7 23.1 16.7 16.1 16.7C8.9 16.7 2.9 21 0 27.3L0 72.7C2.9 79 8.9 83.3 16.1 83.3C23.1 83.3 27.4 77.3 33.8 74.3C36.8 80.7 42.8 85 50 85C57.2 85 63.2 80.7 66.2 74.3C72.6 77.3 76.9 83.3 83.9 83.3C91.1 83.3 97.1 79 100 72.7L100 27.3C97.1 21 91.1 16.7 83.9 16.7C76.9 16.7 72.6 22.7 66.2 25.7C63.2 19.3 57.2 15 50 15Z"/>
+            </svg>
+        </div>
+        <div class="music-content">
+            <p class="player-header">NOW PLAYING</p>
+            <div class="song-details">
+                <h2 id="song-title">Love</h2>
+                <p>Wendy's Playlist</p>
+            </div>
+            <div class="progress-container" id="progress-container"><div class="progress-fill" id="progress"></div></div>
+            <div class="controls">
+                <button class="control-btn" id="prev"><i class="fas fa-backward"></i></button>
+                <button class="control-btn play-toggle" id="playBtn"><i class="fas fa-play"></i></button>
+                <button class="control-btn" id="next"><i class="fas fa-forward"></i></button>
+            </div>
+        </div>
+        <audio id="audio" src="music/love.mp3"></audio>
+    </section>
+
+    <script>
+        const audio = document.getElementById('audio');
+        const playBtn = document.getElementById('playBtn');
+        const progress = document.getElementById('progress');
+        const songTitle = document.getElementById('song-title');
+        const cloverSvg = document.querySelector('.clover-svg');
+
+        // ✅ 音樂清單更新為妳要求的檔名
+        const songs = [
+            { title: "Love", file: "music/love.mp3" },
+            { title: "Kid", file: "music/kid.mp3" },
+            { title: "Snow", file: "music/snow.mp3" }
+        ];
+
+        let songIndex = 0;
+
+        function loadSong(song) {
+            songTitle.innerText = song.title;
+            audio.src = song.file;
+        }
+
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                cloverSvg.style.transform = "scale(1.05)";
+            } else {
+                audio.pause();
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                cloverSvg.style.transform = "scale(1)";
+            }
+        });
+
+        document.getElementById('next').addEventListener('click', () => {
+            songIndex = (songIndex + 1) % songs.length;
+            loadSong(songs[songIndex]);
+            audio.play();
+            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        });
+
+        document.getElementById('prev').addEventListener('click', () => {
+            songIndex = (songIndex - 1 + songs.length) % songs.length;
+            loadSong(songs[songIndex]);
+            audio.play();
+            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            const percentage = (audio.currentTime / audio.duration) * 100;
+            progress.style.width = percentage + '%';
+        });
+    </script>
 </body>
 </html>
